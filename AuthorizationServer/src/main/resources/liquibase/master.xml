@@ -1,0 +1,19 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+   
+	<include file="changelog/20190910T14h1700_tbl_service_schema.xml" relativeToChangelogFile="true" />
+	<include file="changelog/20190910T14h1800_tbl_province_schema.xml" relativeToChangelogFile="true" />
+	<include file="changelog/20190910T22h4500_tbl_depot_schema.xml" relativeToChangelogFile="true" />
+	<include file="changelog/20190912T11h3300_tbl_users_schema.xml" relativeToChangelogFile="true" />
+	<include file="changelog/20190912T11h3301_oauth2_schema.xml" relativeToChangelogFile="true" />
+	<include file="changelog/20190912T11h3303_tbl_receiver_schema.xml" relativeToChangelogFile="true" />
+	<include file="changelog/20190912T11h3304_tbl_shipper_schema.xml" relativeToChangelogFile="true" />
+	<include file="changelog/20190912T11h3305_tbl_sender_schema.xml" relativeToChangelogFile="true" />
+	<include file="changelog/20191020T22h4500_tbl_action_schema.xml" relativeToChangelogFile="true" />
+	<include file="changelog/20191020T22h4501_tbl_resource_schema.xml" relativeToChangelogFile="true" />
+	<include file="changelog/20191020T22h4502_tbl_user_resource_action_schema.xml" relativeToChangelogFile="true" />
+	
+</databaseChangeLog>

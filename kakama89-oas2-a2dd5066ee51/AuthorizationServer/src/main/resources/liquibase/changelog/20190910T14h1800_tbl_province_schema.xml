@@ -1,0 +1,26 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+	<changeSet id="20190910T14h1800" author="toaidx1">
+		<createTable tableName="tbl_province">
+			<column name="id" type="bigint(20)" autoIncrement="true">
+				<constraints primaryKey="true" />
+			</column>
+			<column name="code" type="varchar(50)" >
+				<constraints nullable="false" unique="true"/>
+			</column>
+			<column name="name" type="varchar(50)" />
+			
+			<column name="created_by" type="varchar(50)" />
+			<column name="created_date" type="timestamp" />
+			<column name="last_modified_by" type="varchar(50)" />
+			<column name="last_modified_date" type="timestamp" />
+			<column name="version" type="bigint" />
+		</createTable>
+		<rollback>
+			<dropTable tableName="tbl_province" />
+		</rollback>
+	</changeSet>
+</databaseChangeLog>

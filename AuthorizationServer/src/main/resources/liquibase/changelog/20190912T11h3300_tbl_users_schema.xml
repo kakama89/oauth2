@@ -1,0 +1,35 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+	<changeSet id="20190912T11h3300" author="toaidx1">
+		<createTable tableName="tbl_users">
+			<column name="id" type="varchar(36)">
+				<constraints primaryKey="true" />
+			</column>
+			<column name="username" type="varchar(255)">
+				<constraints unique="true" nullable="false" />
+			</column>
+			<column name="pwd_hash" type="varchar(64)">
+				<constraints nullable="false" />
+			</column>
+			
+			<column name="full_name" type="varchar(255)" />
+			
+			<column name="contact_number" type="varchar(15)"/>
+			
+			<column name="status" type="varchar(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="created_by" type="varchar(50)" />
+			<column name="created_date" type="timestamp" />
+			<column name="last_modified_by" type="varchar(50)" />
+			<column name="last_modified_date" type="timestamp" />
+			<column name="version" type="bigint" />
+		</createTable>
+		<loadData tableName="tbl_users" file="classpath:liquibase/init/user.csv" relativeToChangelogFile="false" />
+		<rollback>
+			<dropTable tableName="tbl_users"/>
+		</rollback>
+	</changeSet>
+</databaseChangeLog>

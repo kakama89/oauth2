@@ -1,0 +1,30 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+	<changeSet id="20191020T22h4502" author="toaidx1">
+		<createTable tableName="tbl_user_resource_action">
+			<column name="id" type="bigint(20)" autoIncrement="true">
+				<constraints primaryKey="true" />
+			</column>
+			<column name="user_id" type="varchar(36)" />
+			<column name="resource_id" type="bigint(20)" />
+			<column name="action_id" type="bigint(20)" />
+			
+			<column name="created_by" type="varchar(50)" />
+			<column name="created_date" type="timestamp" />
+			<column name="last_modified_by" type="varchar(50)" />
+			<column name="last_modified_date" type="timestamp" />
+			<column name="version" type="bigint" />
+		</createTable>
+		<addForeignKeyConstraint constraintName="fk_users_user_resource_action" referencedTableName="tbl_users" baseColumnNames="user_id" baseTableName="tbl_user_resource_action" referencedColumnNames="id"/>
+		<addForeignKeyConstraint constraintName="fk_resource_user_resource_action" referencedTableName="tbl_resource" baseColumnNames="resource_id" baseTableName="tbl_user_resource_action" referencedColumnNames="id"/>
+		<addForeignKeyConstraint constraintName="fk_action_user_resource_action" referencedTableName="tbl_action" baseColumnNames="action_id" baseTableName="tbl_user_resource_action" referencedColumnNames="id"/>
+		
+		<loadData tableName="tbl_user_resource_action" file="classpath:liquibase/init/user_resource_action.csv" relativeToChangelogFile="false" />
+		<rollback>
+			<dropTable tableName="tbl_user_resource_action" />
+		</rollback>
+	</changeSet>
+</databaseChangeLog>

@@ -1,0 +1,27 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+	<changeSet id="20191020T22h4501" author="toaidx1">
+		<createTable tableName="tbl_resource">
+			<column name="id" type="bigint(20)" autoIncrement="true">
+				<constraints primaryKey="true" />
+			</column>
+			<column name="name" type="varchar(15)" >
+				<constraints unique="true" nullable="false"/>
+			</column>
+			<column name="priority" type="integer" />
+			
+			<column name="created_by" type="varchar(50)" />
+			<column name="created_date" type="timestamp" />
+			<column name="last_modified_by" type="varchar(50)" />
+			<column name="last_modified_date" type="timestamp" />
+			<column name="version" type="bigint" />
+		</createTable>
+		<loadData tableName="tbl_resource" file="classpath:liquibase/init/resource.csv" relativeToChangelogFile="false" />
+		<rollback>
+			<dropTable tableName="tbl_resource" />
+		</rollback>
+	</changeSet>
+</databaseChangeLog>

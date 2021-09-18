@@ -1,0 +1,2 @@
+client_id;resource_ids;client_secret;scope;authorized_grant_types;web_server_redirect_uri;access_token_validity;refresh_token_validity;autoapprove
+Trust3dCli3nt;app;$2a$10$iDm6onOqOomT9DCclOb91OZtqPwliUYIlJcvQNV2wHUoqQkt6mFnO;write;authorization_code,password,refresh_token;http://thirdpartyapp.domain;600;86400;false

@@ -1,0 +1,26 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+	<changeSet id="20190912T11h3305" author="toaidx1">
+		<createTable tableName="tbl_sender">
+			<column name="id" type="varchar(36)">
+				<constraints primaryKey="true" />
+			</column>
+			<column name="email" type="varchar(255)" />
+			<column name="id_card" type="varchar(255)" />
+			<column name="tax_id" type="varchar(255)" />
+			<column name="accepted_shipper_id" type="varchar(36)"/>
+			<column name="depot_id" type="bigint(20)" />
+			<column name="province_id" type="bigint(20)" />
+		</createTable>
+		<addForeignKeyConstraint constraintName="fk_sender_shipper_accepted_shipper_id" referencedTableName="tbl_shipper" baseColumnNames="accepted_shipper_id" baseTableName="tbl_sender" referencedColumnNames="id"/>
+		<addForeignKeyConstraint constraintName="fk_sender_depot_depot_id" referencedTableName="tbl_depot" baseColumnNames="depot_id" baseTableName="tbl_sender" referencedColumnNames="id"/>
+		<addForeignKeyConstraint constraintName="fk_sender_province_province_id" referencedTableName="tbl_province" baseColumnNames="province_id" baseTableName="tbl_sender" referencedColumnNames="id"/>
+		<rollback>
+			<dropTable tableName="tbl_sender" />
+		</rollback>
+		<loadData tableName="tbl_sender" file="classpath:liquibase/init/sender.csv" relativeToChangelogFile="false" />
+	</changeSet>
+</databaseChangeLog>
